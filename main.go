@@ -85,7 +85,7 @@ func createOpenIndex(path string) (bleve.Index, error) {
 		if err != nil {
 			return nil, err
 		}
-		index, err = bleve.NewUsing(path, indexMapping, "goleveldb", nil)
+		index, err = bleve.NewUsing(path, indexMapping, bleve.Config.DefaultIndexType, "goleveldb", nil)
 		if err != nil {
 			return nil, err
 		}
