@@ -2,6 +2,7 @@ package main
 
 import (
 	"github.com/blevesearch/bleve"
+	"github.com/blevesearch/bleve/index/store/goleveldb"
 
 	"github.com/spf13/cobra"
 	"github.com/spf13/hugo/commands"
@@ -85,7 +86,7 @@ func createOpenIndex(path string) (bleve.Index, error) {
 		if err != nil {
 			return nil, err
 		}
-		index, err = bleve.NewUsing(path, indexMapping, bleve.Config.DefaultIndexType, "goleveldb", nil)
+		index, err = bleve.NewUsing(path, indexMapping, bleve.Config.DefaultIndexType, goleveldb.Name, nil)
 		if err != nil {
 			return nil, err
 		}
