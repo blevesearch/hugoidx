@@ -58,6 +58,10 @@ func buildindex() {
 	}
 
 	for _, p := range site.Pages {
+		// current work around for issue #2
+		if len(p.Title) <= 0 {
+			continue
+		}
 		jww.INFO.Printf("params: %#v", p.Params)
 		rpl, err := p.RelPermalink()
 		if err != nil {
