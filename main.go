@@ -3,6 +3,7 @@ package main
 import (
 	"github.com/blevesearch/bleve"
 	"github.com/blevesearch/bleve/index/store/goleveldb"
+	"github.com/blevesearch/bleve/mapping"
 
 	"github.com/spf13/cobra"
 	"github.com/spf13/hugo/commands"
@@ -102,7 +103,7 @@ func createOpenIndex(path string) (bleve.Index, error) {
 	return index, nil
 }
 
-func buildIndexMapping() (*bleve.IndexMapping, error) {
+func buildIndexMapping() (mapping.IndexMapping, error) {
 	rv := bleve.NewIndexMapping()
 
 	return rv, nil
