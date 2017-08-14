@@ -1,6 +1,7 @@
 package main
 
 import (
+	"strings"
 	"time"
 
 	"github.com/spf13/hugo/hugolib"
@@ -20,11 +21,12 @@ type Page struct {
 }
 
 func NewPageForIndex(page *hugolib.Page) *Page {
-	author := ""
-	if paramsAuthor, ok := page.Params["author"].([]string); ok {
-		if len(paramsAuthor) > 0 {
-			author = paramsAuthor[0]
-		}
+	var author string
+	switch str := page.Params["author"].(type) {
+	case string:
+		author = str
+	case []string:
+		author = strings.Join(str, ", ")
 	}
 	return &Page{
 		Title:        page.Title,
